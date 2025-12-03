@@ -1,4 +1,4 @@
-# ai01-2nd-Transformers-HDC-NOVA-Multi-Agent-LLM-Team
+# ai01-2nd-Transformers-Multi-Agent-LLM
 HDC랩스 NOVA 2nd-Transformers 레포지토리입니다.
 ***
 # 프로젝트 기획서
