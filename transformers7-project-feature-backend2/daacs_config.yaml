@@ -1,0 +1,49 @@
+# DAACS v6.0 Configuration
+# 각 역할별로 CLI Assistant LLM 또는 플러그인 LLM 선택
+
+# ==================== CLI Assistant 설정 ====================
+cli_assistant:
+  type: "claude_code"  # codex, claude_code, cursor, aider
+  timeout: 600  # 10분 (Backend 코드 생성에 충분한 시간)
+
+# ==================== 역할별 LLM 선택 ====================
+roles:
+  # Orchestrator: 전체 계획 수립 및 결과 판단
+  orchestrator:
+    # 옵션 1: CLI Assistant의 내장 LLM 사용
+    source: "cli_assistant"
+    role: "orchestrator"
+    temperature: 0.3
+
+  # Backend: 백엔드 코드 생성
+  backend:
+    # CLI Assistant LLM 사용 (Claude)
+    source: "cli_assistant"
+    role: "backend"
+    temperature: 0.7
+    fallback:
+      provider: "openai"
+      model: "gpt-4o"
+
+  # Frontend: 프론트엔드 코드 생성
+  frontend:
+    # CLI Assistant LLM 사용
+    source: "cli_assistant"
+    role: "frontend"
+    temperature: 0.7
+
+# ==================== 실행 설정 ====================
+execution:
+  mode: "prod"  # test, prod
+  max_iterations: 10
+  max_subgraph_iterations: 2  # SubGraph 내부 재시도 제한 (Issue #5)
+  max_failures: 5
+  parallel_execution: true  # Backend와 Frontend 병렬 실행
+  log_dir: "logs"
+
+# ==================== API 키 설정 ====================
+# .env 파일에 다음 환경 변수 설정:
+# GROQ_API_KEY=your_groq_api_key
+# ANTHROPIC_API_KEY=your_anthropic_api_key
+# GOOGLE_API_KEY=your_google_api_key
+# OPENAI_API_KEY=your_openai_api_key

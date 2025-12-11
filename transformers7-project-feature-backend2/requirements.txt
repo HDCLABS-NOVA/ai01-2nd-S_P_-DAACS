@@ -1,0 +1,32 @@
+# ==================================================================
+# DAACS v6.0 - Developer Agent Automation & Coordination System
+# Requirements File
+# ==================================================================
+
+# ==================== Core Framework ====================
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.0.0
+
+# ==================== LangGraph (Workflow Engine) ====================
+langgraph>=0.2.0
+
+# ==================== Configuration ====================
+pyyaml>=6.0
+
+# ==================== LLM Providers (Optional) ====================
+# Google Gemini Support
+google-generativeai>=0.8.0
+
+# ==================== Typing ====================
+typing_extensions>=4.0.0
+
+# ==================== Logging & Utilities ====================
+python-json-logger>=2.0.0
+
+# ==================== WebSocket Support ====================
+websockets>=12.0
+
+# ==================== Development & Testing ====================
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
